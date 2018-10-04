@@ -47,7 +47,8 @@ echo
 echo starting qemu ...
 qemu-system-arm -machine versatilepb -cpu cortex-a8 -m 256M $DRIVE $KERNEL $NET $DISPLAY -serial file:qemu-serial-1.txt -serial file:qemu-serial-2.txt -serial file:qemu-serial-3.txt -serial file:qemu-serial-4.txt -append "$CMDLINE" &
 QEMUPID=$!
+set +e
 # egrep -v '^(ALSA |alsa:|audio:|pulseaudio:)' &
-sleep 60
+sleep 30
 kill $QEMUPID
 grep 'testing completed successfully' qemu-serial-1.txt
