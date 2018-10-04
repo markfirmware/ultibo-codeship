@@ -1,6 +1,6 @@
 - name: ls
   service: demoservice
   command: ls -lt
-- name: demoscript
+- name: qemu
   service: demoservice
-  command: ./demoscript
+  command: ./run-qemu
