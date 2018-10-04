@@ -3,4 +3,4 @@
   command: ls -lt
 - name: qemu
   service: demoservice
-  command: ./run-qemu
+  command: ./test-qemu
