@@ -1,12 +1,16 @@
 #!/bin/bash
 set -e
 
-#trap finish EXIT
 #function finish {
-#  PGID=$(ps -o pgid= $$ | grep -o [0-9]*)
-#  setsid kill -- -$PGID
+#  echo finish
+#  sleep 2
+#  set -x
+#  kill -- -$BASHPID
 #  exit 0
 #}
+#trap finish EXIT
+#THISPID=$BASHPID
+#(sleep 5 ; echo ; echo time expired ; kill $THISPID) &
 
 LPINAME=$1
 if [[ $LPINAME == "" ]]
@@ -41,7 +45,9 @@ NET="-net nic -net user,hostfwd=tcp::5823-:23"
 CMDLINE="NETWORK0_IP_CONFIG=STATIC NETWORK0_IP_ADDRESS=10.0.2.15 NETWORK0_IP_NETMASK=255.255.255.0 NETWORK0_IP_GATEWAY=10.0.2.2"
 echo
 echo starting qemu ...
-qemu-system-arm -machine versatilepb -cpu cortex-a8 -m 256M $DRIVE $KERNEL $NET $DISPLAY -serial stdio -append "$CMDLINE" |& egrep -v '^(ALSA |alsa:|audio:|pulseaudio:)' &
-QEMU=$!
-sleep 5
-kill $QEMU
+qemu-system-arm -machine versatilepb -cpu cortex-a8 -m 256M $DRIVE $KERNEL $NET $DISPLAY -serial file:qemu-serial-1.txt -serial file:qemu-serial-2.txt -serial file:qemu-serial-3.txt -serial file:qemu-serial-4.txt -append "$CMDLINE" &
+QEMUPID=$!
+# egrep -v '^(ALSA |alsa:|audio:|pulseaudio:)' &
+sleep 10
+kill $QEMUPID
+grep 'testing completed successfully' qemu-serial-1.txt

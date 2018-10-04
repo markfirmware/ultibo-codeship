@@ -6,7 +6,7 @@ uses
  {$ifdef BUILD_MODE_RPI    } BCM2835, BCM2708, {$endif}
  {$ifdef BUILD_MODE_RPI2   } BCM2836, BCM2709, {$endif}
  {$ifdef BUILD_MODE_RPI3   } BCM2837, BCM2710, {$endif}
- GlobalConfig,Threads,Logging,Serial;
+ GlobalConfig,Threads,Logging,Serial,Platform;
 
 procedure StartSerialLogging;
 begin
@@ -20,5 +20,6 @@ end;
 
 begin
  StartSerialLogging;
+ LoggingOutput('testing not completed succesfully');
  ThreadHalt(0);
 end.
