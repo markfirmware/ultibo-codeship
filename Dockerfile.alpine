@@ -1,0 +1,4 @@
+FROM alpine
+WORKDIR /workdir
+COPY . .
+RUN apk update && apk upgrade && apk add bash

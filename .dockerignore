@@ -1,0 +1,6 @@
+.gitignore
+codeship-services.yml
+codeship-steps.yml
+Dockerfile
+Dockerfile.*
+.git/

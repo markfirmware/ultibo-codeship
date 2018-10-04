@@ -1,0 +1,6 @@
+- name: ls
+  service: demoservice
+  command: ls -lt
+- name: demoscript
+  service: demoservice
+  command: ./demoscript

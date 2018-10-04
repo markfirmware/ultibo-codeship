@@ -1,0 +1,4 @@
+demoservice:
+  build:
+    image: demoimage
+    dockerfile: Dockerfile
