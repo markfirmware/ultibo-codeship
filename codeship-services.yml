@@ -1,4 +1,5 @@
 demoservice:
   build:
+    cached: true
     image: demoimage
     dockerfile: Dockerfile
