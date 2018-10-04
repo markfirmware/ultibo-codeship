@@ -20,6 +20,6 @@ end;
 
 begin
  StartSerialLogging;
- LoggingOutput('testing not completed succesfully');
+ LoggingOutput('testing completed succesfully');
  ThreadHalt(0);
 end.
