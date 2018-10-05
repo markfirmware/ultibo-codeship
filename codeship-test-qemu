@@ -49,6 +49,6 @@ qemu-system-arm -machine versatilepb -cpu cortex-a8 -m 256M $DRIVE $KERNEL $NET 
 QEMUPID=$!
 set +e
 # egrep -v '^(ALSA |alsa:|audio:|pulseaudio:)' &
-sleep 30
+sleep 10
 kill $QEMUPID
 grep 'testing completed successfully' qemu-serial-1.txt

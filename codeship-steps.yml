@@ -1,3 +1,6 @@
+- name: nim
+  service: demoservice
+  command: nim
 - name: ls
   service: demoservice
   command: ls -lt

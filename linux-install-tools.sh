@@ -11,14 +11,17 @@ GITNAME=$1
 
 apt-get update && apt-get -y dist-upgrade && apt-get -y install fail2ban
 apt-get -y install tmux git
-cat <<__EOF__ > .exrc
-set noai ic
-__EOF__
 
 if [[ $GITNAME != "" ]]
 then
     git config --global user.name $GITNAME
     git config --global user.email $GITNAME.users.noreply.github.com
+fi
+
+if [[ $(which nim) == "" ]]
+then
+    curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -n
+    echo 'export PATH=~/.nimble/bin:$PATH' >> .bashrc
 fi
 
 if [[ $(which jet) == "" ]]
@@ -27,6 +30,8 @@ then
     tar -xaC /usr/local/bin -f jet-linux_amd64_2.8.0.tar.gz
     chmod +x /usr/local/bin/jet
     rm jet-linux_amd64_2.8.0.tar.gz
+else
+    jet update
 fi
 
 apt-get -y install \
