@@ -1,9 +1,6 @@
-- name: nim
-  service: demoservice
-  command: nim
 - name: ls
-  service: demoservice
+  service: ultibobuildservice
   command: ls -lt
-- name: qemu
-  service: demoservice
+- name: qemu testing
+  service: ultibobuildservice
   command: ./codeship-test-qemu

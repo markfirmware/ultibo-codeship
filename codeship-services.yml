@@ -1,5 +1,5 @@
-demoservice:
+ultibobuildservice:
   build:
-    image: demoimage
+    image: ultibobuildimage
     dockerfile: Dockerfile
   cached: true
