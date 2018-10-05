@@ -10,7 +10,7 @@ set -e
 GITNAME=$1
 
 apt-get update && apt-get -y dist-upgrade && apt-get -y install fail2ban
-apt-get -y install tmux git
+apt-get -y install build-essential tmux git
 
 if [[ $GITNAME != "" ]]
 then
@@ -20,7 +20,7 @@ fi
 
 if [[ $(which nim) == "" ]]
 then
-    curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -n
+    curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y
     echo 'export PATH=~/.nimble/bin:$PATH' >> .bashrc
 fi
 
